@@ -21,7 +21,7 @@ user_ids = os.getenv('USER_ID', '').split("\n")
 template_id = os.getenv('TEMPLATE_ID')
 
 week_day_dict = {
-  0 : "星期一",
+  0 : '星期一',
   1 : '星期二',
   2 : '星期三',
   3 : '星期四',
