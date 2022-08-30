@@ -20,16 +20,6 @@ app_secret = os.getenv('APP_SECRET')
 user_ids = os.getenv('USER_ID', '').split("\n")
 template_id = os.getenv('TEMPLATE_ID')
 
-week_day_dict = {
-  0 : '星期一',
-  1 : '星期二',
-  2 : '星期三',
-  3 : '星期四',
-  4 : '星期五',
-  5 : '星期六',
-  6 : '星期天',
-}
-
 if app_id is None or app_secret is None:
   print('请设置 APP_ID 和 APP_SECRET')
   exit(422)
@@ -42,10 +32,6 @@ if template_id is None:
   print('请设置 TEMPLATE_ID')
   exit(422)
 
-def get_week_day(date):
-  day = date.weekday()
-  return week_day_dict[day]
-
 # weather 直接返回对象，在使用的地方用字段进行调用。
 def get_weather():
   if city is None:
@@ -57,6 +43,12 @@ def get_weather():
     return None
   weather = res['data']['list'][0]
   return weather
+
+# 获取当前日期为星期几
+def get_week_day():
+  week_list = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
+  week_day = week_list[datetime.date(today).weekday()]
+  return week_day
 
 # 纪念日正数
 def get_memorial_days_count():
@@ -111,7 +103,7 @@ data = {
     "color": get_random_color()
   },
   "weekDay": {
-    "value": get_week_day(datetime.now()),
+    "value": get_week_day(),
     "color": get_random_color()
   },
   "weather": {
