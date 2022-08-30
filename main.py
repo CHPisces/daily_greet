@@ -111,7 +111,7 @@ data = {
     "color": get_random_color()
   },
   "weekDay": {
-    "value": get_week_day(datetime.datetime.mow()),
+    "value": get_week_day(datetime.now()),
     "color": get_random_color()
   },
   "weather": {
