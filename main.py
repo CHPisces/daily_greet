@@ -43,7 +43,7 @@ if template_id is None:
   exit(422)
 
 def get_week_day(date):
-  day = date.weekDay()
+  day = date.weekday()
   return week_day_dict[day]
 
 # weather 直接返回对象，在使用的地方用字段进行调用。
